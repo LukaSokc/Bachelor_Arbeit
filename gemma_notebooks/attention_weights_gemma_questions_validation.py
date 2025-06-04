@@ -75,7 +75,7 @@ def main():
                 return_dict=True
             ).to(device)
 
-            # Forward-Pass mit Attention
+            # Forward-Pass mit Attention Ausgaben, hier werden die Attention Werte ausgegeben
             with torch.no_grad():
                 outputs = model(
                     **inputs,
