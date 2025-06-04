@@ -6,7 +6,7 @@ import torch
 import csv
 
 # Modell setup
-model_id = "merged_model_batchsize_2"
+model_id = "models/Gemma_3_4B/merged_model_batchsize_2"
 model = Gemma3ForConditionalGeneration.from_pretrained(
     model_id, device_map={"":0},torch_dtype=torch.bfloat16
 ).eval()
@@ -25,7 +25,7 @@ data_path = project_root / "data" / "validation"
 dataset = load_from_disk(str(data_path))
 
 # Output CSV erstellen
-output_file = "../docs/gemma/fine_tuned_batchsize_2.csv"
+output_file = "../docs/gemma/fine_tuned_batchsize_2dsd.csv"
 fieldnames = ["ID", "question", "correct_answer", "model_output"]
 
 with open(output_file, mode="w", newline='', encoding="utf-8") as f:

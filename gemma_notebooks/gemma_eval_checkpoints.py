@@ -19,9 +19,9 @@ login("hf_login")
 
 # ===== 2. Verzeichnisse & Dateien =====
 PROJECT_ROOT = Path.cwd().parent
-MODEL_ROOT = PROJECT_ROOT / "gemma-product-description" / "gemma-product-description"
+MODEL_ROOT = PROJECT_ROOT / "models" /"Gemma_3_4B" / "gemma-product-description"
 OUT_CSV = PROJECT_ROOT / "docs" / "gemma" / "gemma_checkpoints.csv"
-INDICES_FILE = PROJECT_ROOT / "this_studio" / "validation_subset_indices.txt"
+INDICES_FILE = PROJECT_ROOT/ "gemma_notebooks" / "validation_subset_indices.txt"
 
 # ===== 3. Hardware & Dtype =====
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"

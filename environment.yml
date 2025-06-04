@@ -2,9 +2,9 @@ name: Bachelor_Arbeit
 channels:
   - conda-forge
 dependencies:
-  - python=3.10
+  - python=3.11
   - pip
   - ruff
   - pip:
-    - python-dotenv
-    - -e .
+      - -r requirements.txt
+      - -e .
