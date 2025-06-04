@@ -145,4 +145,4 @@ def compare_models(paths: dict, do_plot: bool = True) -> pd.DataFrame:
             plt.tight_layout()
             plt.show()
 
-    return comp_df
+    return
