@@ -4,7 +4,7 @@ import torch
 import pandas as pd
 from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor, BitsAndBytesConfig
 from qwen_vl_utils import process_vision_info
-from datasets import load_dataset
+from datasets import load_from_disk
 from pathlib import Path
 from peft import PeftModel
 
@@ -39,14 +39,16 @@ processor.tokenizer.padding_side = "right"
 
 # 3. Adapter laden (Pfad relativ zum Skript, egal von wo gestartet)
 script_dir = Path(__file__).resolve().parent
-adapter_path = script_dir / "output_bs2"
+adapter_path = script_dir.parent / "models" / "qwen" / "output_bs2"
 
 print(f"Before adapter parameters: {base_model.num_parameters()}")
 model = PeftModel.from_pretrained(base_model, str(adapter_path))
 print(f"After adapter parameters: {model.num_parameters()}")
 
 # 4. Validation-Datensatz laden
-dataset = load_dataset("flaviagiammarino/path-vqa", split="validation")
+project_root = Path.cwd().parent
+data_path_val = project_root / "data" / "validation"
+dataset = load_from_disk(str(data_path_val))
 
 # 5. Ergebnis-CSV vorbereiten
 csv_file = script_dir / "results_finetuned_qwen_bs2_val_with_system_message_teeeeessttttt_new.csv"

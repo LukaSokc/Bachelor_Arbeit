@@ -17,7 +17,7 @@ class Config:
     PROCESSED_DATA_DIR: str = os.path.join("data")
     LOG_DIR: str = os.path.join("logs", "resnet50")
     MODEL_DIR: str = os.path.join("models", "resnet50")
-    DOCS_DIR: str = os.path.join("docs", "resnet50")
+    DOCS_DIR: str = os.path.join("docs", "baseline")
 
     # Neuer Arrow-Pfad
     TRAIN_ARROW_DIR: str = os.path.join("data", "train")

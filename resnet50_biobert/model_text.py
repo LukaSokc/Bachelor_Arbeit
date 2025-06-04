@@ -13,7 +13,7 @@ class BioBERTBiLSTM(nn.Module):
     def __init__(self, biobert_model="dmis-lab/biobert-v1.1", lstm_hidden=256,
                  dropout=0.1, max_len=40):
         super().__init__()
-        self.biobert = AutoModel.from_pretrained(biobert_model)
+        self.biobert = AutoModel.from_pretrained(biobert_model, use_safetensors=True)
         hidden_size = self.biobert.config.hidden_size  # 768
 
         self.bilstm = nn.LSTM(

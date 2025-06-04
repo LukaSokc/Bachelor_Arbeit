@@ -184,4 +184,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-models/baseline/resnet50_biobert_finetuned_2025-05-10_15-12-59.pt
+models/resnet50/resnet50_biobert_finetuned_2025-05-10_15-12-59.pt

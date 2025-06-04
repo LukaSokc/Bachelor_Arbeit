@@ -11,7 +11,6 @@ def main():
     project_root = Path.cwd().parent
     data_path = project_root / "data" / "validation"
 
-    # 1) Datensatz laden
     dataset = load_from_disk(str(data_path))
 
     # 2) Modell und Prozessor laden
@@ -22,7 +21,7 @@ def main():
     )
     processor = AutoProcessor.from_pretrained("Qwen/Qwen2.5-VL-3B-Instruct")
 
-    # Optional: System Message
+    # System Message
     system_message = (
         "You are a medical pathology expert. Your task is to answer medical questions "
         "based solely on the visual information in the provided pathology image. "
@@ -34,13 +33,12 @@ def main():
         "Only return the exact answer."
     )
 
-    # 3) Pfad zur CSV-Datei definieren
-    csv_file = project_root / "docs" / "docs" / "results_zero_shot_qwen_val_with_system_message_29_3_2025.csv"
+    csv_file = project_root / "docs" / "qwen" / "results_zero_shot_qwen_val.csv"
     csv_file.parent.mkdir(parents=True, exist_ok=True)
 
     # 4) Prüfen, ob die Datei bereits existiert.
     if csv_file.exists():
-        # Falls ja: wir hängen neue Einträge an (Modus "a"), ohne Header
+        # Falls ja nur anhängen
         file_mode = "a"
         write_header = False
         # Letzte ID ermitteln:
@@ -53,12 +51,11 @@ def main():
         except Exception:
             last_id = 0
     else:
-        # Falls nein: neue Datei erstellen (Modus "w"), mit Header
+        # Falls nicht neue Daten erstellt
         file_mode = "w"
         write_header = True
         last_id = 0
 
-    # 5) Datei 1x öffnen und am Ende schließen
     with open(csv_file, file_mode, newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
             f,
@@ -107,7 +104,7 @@ def main():
                 return_tensors="pt",
             ).to("cuda")
 
-            generated_ids = model.generate(**inputs, max_new_tokens=96)
+            generated_ids = model.generate(**inputs, max_new_tokens=100)
             # Prompt entfernen
             generated_ids_trimmed = [
                 out_ids[len(in_ids):]

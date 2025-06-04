@@ -28,7 +28,7 @@ def main():
 
     # Test-Datensatz laden (verwende den in der Config definierten Test-Pfad)
     test_ds = PathVQADataset(
-        arrow_dir=cfg.TEST_ARROW_DIR,
+        arrow_dir=cfg.VAL_ARROW_DIR,
         image_dir=cfg.DATA_DIR,
         tokenizer=tokenizer,
         max_length=cfg.MAX_QUESTION_LEN

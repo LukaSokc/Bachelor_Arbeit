@@ -3,7 +3,7 @@ from pathlib import Path
 
 current_file = Path(__file__).resolve()
 
-project_root = current_file.parent
+project_root = current_file.parent.parent
 
 save_path = project_root / "data"
 
