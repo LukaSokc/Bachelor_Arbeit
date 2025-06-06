@@ -1,61 +1,58 @@
-# Bachelor Arbeit
+# Kompakte Multimodale Sprachmodelle in der Pathologie-VQA
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
+**Bachelorarbeit an der Zürcher Hochschule für Angewandte Wissenschaften (ZHAW)**  
+Autoren: Arbnor Ziberi, Luka Sokcevic  
+Betreuerin: Prof. Dr. Jasmina Bogojeska
 
-A short description of the project.
+---
 
-## Project Organization
+## Projektbeschreibung
 
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         Bachelor_Arbeit and configuration for tools like black
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
-└── Bachelor_Arbeit   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes Bachelor_Arbeit a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
-```
+Dieses Projekt untersucht den Einsatz kompakter multimodaler Sprachmodelle (MLLMs) für Visual Question Answering (VQA) in der Pathologie.
 
---------
+Im Zentrum stehen ein Leistungsvergleich zwischen Gemma 3 4B und Qwen 2.5VL 3B auf dem PathVQA-Datensatz, sowie Erklärbarkeitsansätze zur Modelltransparenz.  
+Alle Hintergründe, Motivation und Ziele sind im PDF der Bachelorarbeit detailliert beschrieben.
 
+---
+
+## Installation
+
+Für das lokale Setup benötigst du eine GPU (mindestens T4 für Inferenz, LS40 für Finetuning empfohlen).
+
+**Schritt-für-Schritt-Anleitung:**
+
+1. Repository clonen:  
+   ```bash
+   git clone https://github.com/LukaSokc/Bachelor_Arbeit.git
+   cd Bachelor_Arbeit
+2. Abhängigkeiten installieren (je nach Modell):
+   - Für Gemma (Fine-Tuning & Inferenz):
+    pip install -r requirements_gemma.txt
+    - Für Qwen (Fine-Tuning & Inferenz):
+      pip install -r requirements_qwen.txt
+
+
+Wichtig: Die beiden requirements-Dateien sind nicht kompatibel. Immer nur eine installieren, je nachdem, mit welchem Modell gearbeitet wird.
+
+3. Mit ausreichend GPU-Ressourcen können die MLLMs wie in der Arbeit beschrieben fine-getuned werden.
+
+## Nutzung
+- Trainieren/Fine-Tuning:
+Das Fine-Tuning der Modelle wurde auf einer LS40 GPU durchgeführt (siehe Kapitel Hardware im PDF).
+
+- Inferenz:
+Für Inferenz genügt eine T4 GPU (wie im Projekt getestet).
+
+## Abhängigkeiten
+Alle benötigten Libraries sind in den jeweiligen requirements_*.txt aufgelistet.
+Es gibt keine API-Keys oder weitere versteckte Konfigurationen.
+
+## Beitragende
+Bei Fragen zum Projekt oder bei Interesse an einer Zusammenarbeit:
+
+- Arbnor Ziberi: ziberarb@students.zhaw.ch
+
+- Luka Sokcevic: sokceluk@students.zhaw.ch
+
+
+Detaillierte Informationen zu Motivation, wissenschaftlichem Hintergrund, Methoden, Daten, Ergebnissen und Erklärbarkeit der Modelle findest du direkt in der Bachelorarbeit im PDF-Format.
