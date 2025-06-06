@@ -51,7 +51,7 @@ data_path_val = project_root / "data" / "validation"
 dataset = load_from_disk(str(data_path_val))
 
 # 5. Ergebnis-CSV vorbereiten
-csv_file = script_dir / "results_finetuned_qwen_bs2_val_with_system_message_teeeeessttttt_new.csv"
+csv_file = script_dir / "results_finetuned_qwen_bs2.csv"
 
 # Falls Datei existiert: Start-ID ermitteln
 if csv_file.exists():
